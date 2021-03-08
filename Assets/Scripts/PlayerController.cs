@@ -12,9 +12,7 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        Vector2 dir = (Input.mousePosition - Camera.main.WorldToScreenPoint(transform.position));
-        float angle = (Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg);
-        transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        PlayerDirection();
     }
 
     private void PlayerMovement()
@@ -23,5 +21,12 @@ public class PlayerController : MonoBehaviour
         {
             transform.Translate(Vector3.right * m_MoveSpeed * Time.fixedDeltaTime);
         }
+    }
+
+    private void PlayerDirection()
+    {
+        Vector2 dir = (Input.mousePosition - Camera.main.WorldToScreenPoint(transform.position));
+        float angle = (Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg);
+        transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
     }
 }
